@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang=en>
+
+{{{header}}}
+
+<body>
+
+	{{{menu_bar}}}
+
+	<section class="section--featured">
+		<div class="div--featured">
+			<div>
+				<h1 class="title--underlined">Latest Post</h1>
+				<a class="title--large" href={{top_post.blog_link}}>{{top_post.title}}</a>
+				<div class="div--horizontal">
+					<div>{{top_post.post_month}} {{top_post.post_day}}</div>
+					<div><img height="10" src="/images/heart.png"> {{top_post.heart_count}}</div>
+					<div><img height="10" src="/images/comment.png"> {{top_post.comment_count}}</div>
+				</div>
+			</div>
+			<div class="div--right">
+				<a href={{top_post.blog_link}}>
+					<img class="featured-thumbnail" src={{top_post.thumbnail_path}}>
+				</a><br>
+			</div>
+		</div>
+	</section>
+
+	<div class="cards--grid">
+		{{#each blogposts}}
+		<div>
+			<div>
+				<a href={{blog_link}}>
+					<img class="thumbnail--grid" height="200" src={{thumbnail_path}}><br>
+				</a>
+				<a href={{blog_link}}>{{title}}</a>
+			</div>
+
+			<div class="div--horizontal">
+				<div>{{post_month}} {{post_day}}</div>
+				<div><img height="10" src="/images/heart.png"> {{heart_count}}</div>
+				<div><img height="10" src="/images/comment.png"> {{comment_count}}</div>
+			</div>
+		</div>
+		{{/each}}
+	</div>
+	
+	{{{footer}}}
+</body>
+
+</html>
