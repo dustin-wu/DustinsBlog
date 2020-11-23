@@ -4,7 +4,6 @@ const app = express();
 const port = 3000;
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
-require('dotenv').config()
 
 // set up handlebars templating engine
 app.set('view engine', 'html');
