@@ -31,7 +31,7 @@ CREATE TABLE `blogpost` (
   `comment_count` int NOT NULL DEFAULT '0',
   `post_date` date DEFAULT (curdate()),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `blogpost` (
 
 LOCK TABLES `blogpost` WRITE;
 /*!40000 ALTER TABLE `blogpost` DISABLE KEYS */;
-INSERT INTO `blogpost` VALUES (1,'Debugging your code can be hard. Like, really hard. Harder than writing the code itself, even. But holding a stethoscope to your computers monitor certainly wont get you anywhere.','How to debug your code','placeholder1.jpg',11,4,'2020-11-21'),(2,'Distractions mean that you aren’t writing code, so you want to minimize distractions. What is a distraction to you? Maybe you need to lock yourself out of accessing websites like Youtube or Facebook. Maybe you need to surround yourself with peers that can hold you accountable. Maybe you work best alone and in the zone. The point is, you should put work into discovering what environment works best for you.','Why workplace environment is the most important thing for a developer','placeholder2.jpg',3,2,'2020-11-21'),(3,'Working on code as a team adds a lot of complications. Differing opinions on style and/or on problem-solving approach can cause arguments and setbacks. And sometimes you really just need some alone time to figure out how to implement that one feature. Then again, almost every single piece of ambitious software has a team, not just an individual, behind it.','Group projects','placeholder3.jpg',6,5,'2020-11-21'),(4,'Confusion is frustrating. It makes you wonder why you decided to get into programming; “Was I in it for the clout all along?”, and “What life choices led me to this moment?” are questions you might ask yourself. Confusion is scary; it makes you question if you’re inadequate and if you’re less capable peers/coworkers. Confusion is stressful, as one issue completely prevents you from making progress towards the imminent deadline. So how do you deal with it? It’s simple; just realize that everyone is confused. All the time. It isn’t just you.','How to deal with confusion','placeholder4.jpg',2,3,'2020-11-21'),(5,'Just look at the above stock photo image. Who wants to read such cluttered code? Could anyone even begin to interpret it? I mean why would you not use spaces and indents, so you can shrink down the file size by a couple of bytes. If you coded like this and I was your boss, I would fire you. In fact, I bet that any boss would fire you. Please add spaces and indents to your code.','Why you need to use spaces and indents','placeholder5.jpg',3,3,'2020-11-21');
+INSERT INTO `blogpost` VALUES (1,'Debugging your code can be hard. Like, really hard. Harder than writing the code itself, even. But holding a stethoscope to your computers monitor certainly wont get you anywhere.','How to debug your code','placeholder1.jpg',12,4,'2020-11-21'),(2,'Distractions mean that you aren’t writing code, so you want to minimize distractions. What is a distraction to you? Maybe you need to lock yourself out of accessing websites like Youtube or Facebook. Maybe you need to surround yourself with peers that can hold you accountable. Maybe you work best alone and in the zone. The point is, you should put work into discovering what environment works best for you.','Why workplace environment is the most important thing for a developer','placeholder2.jpg',3,2,'2020-11-21'),(3,'Working on code as a team adds a lot of complications. Differing opinions on style and/or on problem-solving approach can cause arguments and setbacks. And sometimes you really just need some alone time to figure out how to implement that one feature. Then again, almost every single piece of ambitious software has a team, not just an individual, behind it.','Group projects','placeholder3.jpg',6,5,'2020-11-21'),(4,'Confusion is frustrating. It makes you wonder why you decided to get into programming; “Was I in it for the clout all along?”, and “What life choices led me to this moment?” are questions you might ask yourself. Confusion is scary; it makes you question if you’re inadequate and if you’re less capable peers/coworkers. Confusion is stressful, as one issue completely prevents you from making progress towards the imminent deadline. So how do you deal with it? It’s simple; just realize that everyone is confused. All the time. It isn’t just you.','How to deal with confusion','placeholder4.jpg',2,3,'2020-11-21'),(5,'Just look at the above stock photo image. Who wants to read such cluttered code? Could anyone even begin to interpret it? I mean why would you not use spaces and indents, so you can shrink down the file size by a couple of bytes. If you coded like this and I was your boss, I would fire you. In fact, I bet that any boss would fire you. Please add spaces and indents to your code.','Why you need to use spaces and indents','placeholder5.jpg',3,3,'2020-11-21');
 /*!40000 ALTER TABLE `blogpost` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +84,7 @@ CREATE TABLE `inquiry` (
   `inquiry_email` text NOT NULL,
   `inquiry_message` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `inquiry` (
 
 LOCK TABLES `inquiry` WRITE;
 /*!40000 ALTER TABLE `inquiry` DISABLE KEYS */;
-INSERT INTO `inquiry` VALUES (8,'test','testing'),(9,'test2@foo.bar','this is a second test just to confirm that things are working.'),(10,'test@test.com','Test inquiry here, idk what else to say.'),(11,'likehtehundrethtest@gmail.com','Hello, again.'),(12,'adsf','daf'),(13,'dashes','safasdf'),(14,'test1111','1111'),(15,'adsf','adsfasf'),(16,'asdf','dsafasdf'),(17,'gfdsg','fdafds'),(18,'final test','probably not but ok'),(19,'stewst','sdfasdf'),(20,'asdf','dfaf');
+INSERT INTO `inquiry` VALUES (21,'exampe@inquiry.com','I\'m quite interested in your website and would like to hire you for a job at Google (I wish)'),(22,'example2@inquiry.com','This is another example inquiry. Nothing else to say.');
 /*!40000 ALTER TABLE `inquiry` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -106,4 +106,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-24 12:07:48
+-- Dump completed on 2020-11-24 13:11:12
