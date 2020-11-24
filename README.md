@@ -21,7 +21,9 @@ Next, dump the provided contents into it:
 ```bash
 mysql -u root -p dustinsblog < dustinsblogdata.sql
 ```
-Before running the website, you'll need to alter line 24 of index.js, replacing [YOUR PASSWORD] with your root password. 
+Before running the website, you'll need to insert a .env file into the root directory so that the website can access the database. The file should contain the one line
+`DB_PASS=[Your root password]`.
+
 The website currently runs on localhost port 3000. To run it, call the npm start script
 ```bash
 npm start

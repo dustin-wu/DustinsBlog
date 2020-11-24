@@ -28,8 +28,8 @@ app.use(bodyParser.urlencoded({
 
 // set up our database
 const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
+  host: 'localhost',
+  user: 'root',
   password: process.env.DB_PASS,
   database: 'dustinsblog',
   multipleStatements: true
