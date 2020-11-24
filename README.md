@@ -43,6 +43,7 @@ To view inquiries sent through the website form, run viewinquiries.sh
 The repository file contains: 
 * index.js, the main driver of the website
 * dustinsblogdata.sql, the uploaded database of the website
+* setup.sh, newpost.sh, and viewinquiries.sh, the shell scripts described above
 * .gitignore, and README.md, standard Git auxillary files
 * package.json and package-lock.json, containing all of the project's dependencies
 * public, containing the CSS and the images used in the website
