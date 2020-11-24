@@ -6,8 +6,13 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 
 // set up handlebars templating engine
-app.set('view engine', 'html');
-app.engine('html', require('hbs').__express);
+const handlebars = require('express-handlebars');
+app.set('view engine', 'hbs');
+app.engine('hbs', handlebars({
+layoutsDir: __dirname + '/views/layouts',
+partialsDir: __dirname + '/views/partials',
+extname: 'hbs'
+}));
 
 // set up access to the public directory
 app.use(express.static('public'));
@@ -20,43 +25,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const pool = mysql.createPool({
 	host: 'localhost',
 	user: 'root',
-	password: '[YOUR PASSWORD]',
+	password: 'dustin1212',
 	database: 'dustinsblog',
 	multipleStatements: true
 });
-
-// header of website that is common to all pages
-const header = 
-`<head>
-<meta charset=utf-8>
-<link rel='stylesheet' href='/css/style.css'>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
-</style>
-<title>Dustin's Blog</title>
-</head>`
-
-// top menu bar of website that is common to all pages
-const menu_bar = 
-`<div class=navbar>
-<h1>Dustin's Blog</h1>
-<a href="/">Home</a>
-<a href="/about/">About</a>
-<a href="/contact/">Contact</a>
-</div>`;
-
-// bottom area of website that is common to all pages
-const footer = 
-`<section class="footer">
-Made with HTML, CSS, Express, Handlebars, npm, mySQL, and lots of confusion and procrastination<br>
-Website layout/design inspired by wix.com/blog and medium.com<br>
-Special thanks to StackOverflow, W3Schools, and Nick Young and Johnny Roy from Full Stack at Brown
-</section>`
-
-// give all views access to the above site sections
-app.locals.header = header;
-app.locals.menu_bar = menu_bar;
-app.locals.footer = footer;
 
 app.post('/blogpost/:id/hearted', (req, res) => {
 	const blogpost_id = req.params.id;
@@ -119,7 +91,7 @@ app.post('/contact/', (req, res) => {
 				return
 			}
 			// redirect user to updated contact page so they know that their inquiry went through
-			res.redirect('/contact/submitted');
+			res.redirect('/contact/?submitted=true');
 			connection.release();
 		});
 	});
@@ -162,7 +134,7 @@ app.get('/', (req, res) => {
 				top_post: top_post,
 				blogposts: blogposts
 			};
-			res.render('index');
+			res.render('home', {layout: 'main'});
 			connection.release();
 		});
 	});
@@ -212,39 +184,25 @@ app.get('/blogpost/:id', (req, res) => {
 					}
 				}
 				res.locals = blogpost;
-				res.render('blogpost');
+				res.render('blogpost', {layout: 'main'});
 				connection.release();
 			});
 	});
 });
 
 app.get('/contact/', (req, res) => {
-	const submit_section_form = 
-	`<form method="post" action="/contact/">
-	<input class="text-input-small" type="text" id="inquiry_email" name="inquiry_email" placeholder="Your email" required><br>
-	<textarea class="text-input-large" id="inquiry_message" name="inquiry_message" placeholder="Your message" required></textarea><br>
-	<button type="submit">Submit</button>
-	</form>`;
-	// the user has not submitted yet, so present them with the form
-	res.locals = {
-		submit_section: submit_section_form
-	};
-	res.render('contact');
-});
-
-app.get('/contact/submitted', (req, res) => {
-	const submit_section_submitted = `<p>Thanks for the message! I'll get back to you as soon as I feel like it.</p>`;
-	// the user has submitted, so present them with a success message
-	res.locals = {
-		submit_section: submit_section_submitted
-	};
-	res.render('contact');
+	var submitted = req.query.submitted;
+	if (submitted == 'true') {
+		res.render('contact', {layout: 'main', submitted: true});
+	} else {
+ 		res.render('contact', {layout: 'main', submitted: false});
+ 	}
 });
 
 app.get('/about/', (req, res) => {
-	res.render('about');
+	res.render('about', {layout: 'main'});
 });
 
 app.listen(port, () => {
-	console.log(`Example app listening at http://localhost:${port}`);
+	console.log(`Dustin's Blog listening at http://localhost:${port}`);
 });
