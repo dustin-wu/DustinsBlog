@@ -21,8 +21,10 @@ Next, dump the provided contents into it:
 ```bash
 mysql -u root -p dustinsblog < dustinsblogdata.sql
 ```
-Before running the website, you'll need to insert a .env file into the root directory so that the website can access the database. The file should contain the one line
-`DB_PASS=[Your root password]`.
+Before running the website, you'll need to insert a .env file into the root directory so that the website can access the database. The file should contain the one line 
+```bash
+DB_PASS=[Your root password]
+```
 
 The website currently runs on localhost port 3000. To run it, call the npm start script
 ```bash
@@ -36,9 +38,9 @@ The website has three main features: storing/opening blog posts, "heart"-ing and
 ```bash
 mysql -u root -p
 USE dustinsblog;
-INSERT INTO blogpost(title, thumbnail_path, blog_body) VALUES([your title], [path to your thumbnail], [your blog body])
+INSERT INTO blogpost(title, thumbnail, blog_body) VALUES([your title], [name of thumbnail file], [your blog body])
 ```
-where [path to your thumbnail] is the path the the thumbnail image relative to the public folder (typically images would be stored in /images).
+where the file with [name of thumbnail file] is stored in /public/images.
 
 ## Repository Structure
 

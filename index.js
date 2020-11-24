@@ -121,7 +121,7 @@ app.get('/', (req, res) => {
         blogposts[i] = {
           blog_link: '/blogpost/'.concat(result[i].id),
           title: result[i].title,
-          thumbnail_path: result[i].thumbnail_path,
+          thumbnail_path: '/images/'.concat(result[i].thumbnail),
           content: result[i].content,
           post_month: result[i].post_month,
           post_day: result[i].post_day,
@@ -178,7 +178,7 @@ app.get('/blogpost/:id', (req, res) => {
           blogpost = {
             id: blogpost_id,
             title: result[0].title,
-            thumbnail_path: result[0].thumbnail_path,
+            thumbnail_path: '/images/'.concat(result[0].thumbnail),
             blog_body: result[0].blog_body,
             post_month: result[0].post_month,
             post_day: result[0].post_day,
