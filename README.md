@@ -2,29 +2,20 @@
 
 Dustin's Blog is a platform I built to express my opinions/insights onto whatever I feel like writing about.
 
-## Installation
+## Setup
 
-After downloading the zip, use the package manager [npm](https://www.npmjs.com/get-npm) to install all of the requirements.
+After downloading the zip, run setup.sh, entering in your root passwoord when prompted, to install all of the requirements and create the database. The script relies on [npm](https://www.npmjs.com/get-npm) to install the requirements, so install it if you haven't already.
 ```bash
-npm ci
+./setup.sh
 ```
 
 ## Usage
 
-To load in the database, create a new database called dustinsblog, entering in your root password when prompted.
-```bash
-mysql -u root -p
-CREATE DATABASE dustinsblog;
-quit;
-```
-Next, dump the provided contents into it:
-```bash
-mysql -u root -p dustinsblog < dustinsblogdata.sql
-```
-Before running the website, you'll need to insert a .env file into the root directory so that the website can access the database. The file should contain the one line 
+Before running the website, you'll need to edit the .env file created by setup.sh so that website can access the database. When you first open it, the file should contain the one line 
 ```bash
 DB_PASS=[Your root password]
 ```
+Fill in [Your root password]. 
 
 The website currently runs on localhost port 3000. To run it, call the npm start script
 ```bash
@@ -34,13 +25,18 @@ and then open http://localhost:3000 on a web browser.
 
 ## Features
 
-The website has three main features: storing/opening blog posts, "heart"-ing and commenting on posts, and sending inquiries through a form. To insert a new blog post into the database, run the following commands
+The website has three main features: storing/opening blog posts, "heart"-ing and commenting on posts, and sending inquiries through a form. 
+
+To insert a new blog post into the database, run newpost.sh
 ```bash
-mysql -u root -p
-USE dustinsblog;
-INSERT INTO blogpost(title, thumbnail, blog_body) VALUES([your title], [name of thumbnail file], [your blog body])
+./newpost.sh
 ```
-where the file with [name of thumbnail file] is stored in /public/images.
+And fill in the contents of the blog post when prompted.
+
+To view inquiries sent through the website form, run viewinquiries.sh
+```bash
+./viewinquiries.sh
+```
 
 ## Repository Structure
 
@@ -50,7 +46,7 @@ The repository file contains:
 * .gitignore, and README.md, standard Git auxillary files
 * package.json and package-lock.json, containing all of the project's dependencies
 * public, containing the CSS and the images used in the website
-* views, containing the html files for each of the website's pages
+* views, containing the handlebars files that make up the website
 
 ## Project Contributors
 * Dustin Wu (dustin_wu@brown.edu)
