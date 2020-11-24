@@ -5,6 +5,9 @@ const port = 3000;
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 
+// set up dotenv
+require('dotenv').config()
+
 // set up handlebars templating engine
 const handlebars = require('express-handlebars');
 app.set('view engine', 'hbs');
@@ -25,9 +28,9 @@ app.use(bodyParser.urlencoded({
 
 // set up our database
 const pool = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'dustin1212',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
   database: 'dustinsblog',
   multipleStatements: true
 });
